@@ -16,7 +16,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - ConnectionString__PostgreSQLConnection=User ID=admin;Password=admin123;Server=localhost;Port=5432;Database=driverdb; IntegratedSecurity=true;Pooling=true;
+      - ConnectionString__PostgreSQLConnection=User ID=admin;Password=admin123;Server=localhost;Port=6666;Database=driverdb; IntegratedSecurity=true;Pooling=true;
       - ASPNETCORE_URLS=http://+:80
     networks:
       - dev
@@ -29,13 +29,12 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=DriverDB
     ports:
-      - "5432:5432"
+      - "6666:5432"
     restart: always
     volumes:
-      - app_data: /var/lib/postgresql/data
+      - app_data:/var/lib/postgresql/data
     networks:
       - dev
 
-volumes: 
-  app_data
-  type
+volumes:
+  app_data:
